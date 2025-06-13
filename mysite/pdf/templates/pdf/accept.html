@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            font-family: 'Segoe UI', sans-serif;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            padding: 50px 20px 30px;
+        }
+        .header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .form-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 850px;
+            margin: auto;
+        }
+        .form-section-title {
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            color: #2575fc;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+        .form-group label {
+            font-weight: 600;
+        }
+        .btn-primary {
+            background-color: #2575fc;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 6px;
+        }
+        .btn-primary:hover {
+            background-color: #1a5edb;
+        }
+        select.form-control {
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CV Generator</h1>
+        <p class="lead">Create a professional resume in minutes</p>
+    </div>
+
+    <div class="form-card">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-section-title">Personal Information</div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">Full Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="e.g. John Doe">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="e.g. john@example.com">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="e.g. 9876543210">
+            </div>
+
+            <div class="form-section-title">Professional Summary</div>
+            <div class="form-group">
+                <label for="summary">About You</label>
+                <textarea class="form-control" id="summary" name="summary" rows="3" placeholder="Write a brief summary about yourself"></textarea>
+            </div>
+
+            <div class="form-section-title">Education</div>
+            <div class="form-group">
+                <label for="degree">Degree</label>
+                <input type="text" class="form-control" id="degree" name="degree" placeholder="e.g. B.Tech in Computer Science">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="school">School</label>
+                    <input type="text" class="form-control" id="school" name="school" placeholder="e.g. ABC High School">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="university">University</label>
+                    <input type="text" class="form-control" id="university" name="university" placeholder="e.g. XYZ University">
+                </div>
+            </div>
+
+            <div class="form-section-title">Experience</div>
+            <div class="form-group">
+                <label for="experience">Work Experience</label>
+                <textarea class="form-control" id="experience" name="experience" rows="3" placeholder="e.g. Software Developer at ABC Corp"></textarea>
+            </div>
+
+            <div class="form-section-title">Skills</div>
+            <div class="form-group">
+                <label for="skills">Your Skills</label>
+                <textarea class="form-control" id="skills" name="skills" rows="2" placeholder="e.g. Python, JavaScript, SQL"></textarea>
+            </div>
+
+            <div class="form-section-title">Template Selection</div>
+            <div class="form-group">
+                <label for="template">Choose Resume Template</label>
+                <select class="form-control" id="template" name="template_choice">
+                    <option value="template1">Classic</option>
+                    <option value="template2">Modern</option>
+                    <option value="template3">Elegant</option>
+                </select>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Generate Resume</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
